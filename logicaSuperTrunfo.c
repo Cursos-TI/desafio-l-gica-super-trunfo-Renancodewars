@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-// utilização de IA, porém utilizei pois ja entendo funções como for while if else e elif pois ja utilizo para programar em Python
+
     // =========================
     // DECLARAÇÃO DE VARIÁVEIS
     // =========================
@@ -19,6 +19,7 @@ int main() {
     float densidade, densidade2;
     float pibpercapita, pibpercapita2;
 
+    int opcao;
 
     // =========================
     // CADASTRO CARTA 1
@@ -29,24 +30,23 @@ int main() {
     printf("Estado (A-Z): ");
     scanf(" %c", &estado);
 
-    printf("Código (ex: A01): ");
+    printf("Codigo (ex: A01): ");
     scanf("%s", codigo);
 
     printf("Digite a cidade: ");
     scanf("%s", cidade);
 
-    printf("População: ");
+    printf("Populacao: ");
     scanf("%d", &populacao);
 
-    printf("Área (em km): ");
+    printf("Area (em km): ");
     scanf("%f", &area);
 
     printf("PIB: ");
     scanf("%f", &pib);
 
-    printf("Pontos turísticos: ");
+    printf("Pontos turisticos: ");
     scanf("%d", &pontosTuristicos);
-
 
     // =========================
     // CADASTRO CARTA 2
@@ -57,89 +57,120 @@ int main() {
     printf("Estado (A-Z): ");
     scanf(" %c", &estado2);
 
-    printf("Código (ex: A01): ");
+    printf("Codigo (ex: A01): ");
     scanf("%s", codigo2);
 
     printf("Digite a cidade: ");
     scanf("%s", cidade2);
 
-    printf("População: ");
+    printf("Populacao: ");
     scanf("%d", &populacao2);
 
-    printf("Área (em km): ");
+    printf("Area (em km): ");
     scanf("%f", &area2);
 
     printf("PIB: ");
     scanf("%f", &pib2);
 
-    printf("Pontos turísticos: ");
+    printf("Pontos turisticos: ");
     scanf("%d", &pontosTuristicos2);
 
-
     // =========================
-    // EXIBIÇÃO DOS DADOS
-    // =========================
-
-    printf("\n--- Carta 1 ---\n");
-    printf("Estado: %c\n", estado);
-    printf("Código: %s\n", codigo);
-    printf("Cidade: %s\n", cidade);
-    printf("População: %d\n", populacao);
-    printf("Área: %.2f km²\n", area);
-    printf("PIB: %.2f bilhões\n", pib);
-    printf("Pontos turísticos: %d\n", pontosTuristicos);
-
-    printf("\n--- Carta 2 ---\n");
-    printf("Estado: %c\n", estado2);
-    printf("Código: %s\n", codigo2);
-    printf("Cidade: %s\n", cidade2);
-    printf("População: %d\n", populacao2);
-    printf("Área: %.2f km²\n", area2);
-    printf("PIB: %.2f bilhões\n", pib2);
-    printf("Pontos turísticos: %d\n", pontosTuristicos2);
-
-
-    // =========================
-    // CÁLCULOS CARTA 1
+    // CALCULOS
     // =========================
 
     densidade = (float)populacao / area;
     pibpercapita = pib / populacao;
 
-    printf("\nCálculos Carta 1\n");
-    printf("Densidade populacional: %.2f\n", densidade);
-    printf("PIB per capita: %.2f\n", pibpercapita);
-
-
-    // =========================
-    // CÁLCULOS CARTA 2
-    // =========================
-
     densidade2 = (float)populacao2 / area2;
     pibpercapita2 = pib2 / populacao2;
 
-    printf("\nCálculos Carta 2\n");
-    printf("Densidade populacional: %.2f\n", densidade2);
-    printf("PIB per capita: %.2f\n", pibpercapita2);
-    
     // =========================
-    // DECISÃO DE CARTA VENCEDORA
+    // MENU INTERATIVO
     // =========================
-    
-    printf("\nComparação de cartas (Atributo: População):\n");
 
-printf("Carta 1 - %s: %d habitantes\n", cidade, populacao);
-printf("Carta 2 - %s: %d habitantes\n", cidade2, populacao2);
+    printf("\n=== MENU DE COMPARACAO ===\n");
+    printf("Escolha o atributo:\n");
+    printf("1 - Populacao\n");
+    printf("2 - Area\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turisticos\n");
+    printf("5 - Densidade Demografica (MENOR vence)\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
 
-if (populacao > populacao2) {
-    printf("Resultado: Carta 1 (%s) venceu!\n", cidade);
-}
-else if (populacao2 > populacao) {
-    printf("Resultado: Carta 2 (%s) venceu!\n", cidade2);
-}
-else {
-    printf("Resultado: Empate! As duas cidades possuem a mesma população.\n");
-}
+    printf("\n--- RESULTADO DA BATALHA ---\n");
+
+    switch(opcao) {
+
+    case 1:
+        printf("Atributo: Populacao\n");
+        printf("%s: %d habitantes\n", cidade, populacao);
+        printf("%s: %d habitantes\n", cidade2, populacao2);
+
+        if (populacao > populacao2)
+            printf("Vencedor: %s\n", cidade);
+        else if (populacao2 > populacao)
+            printf("Vencedor: %s\n", cidade2);
+        else
+            printf("Empate!\n");
+        break;
+
+    case 2:
+        printf("Atributo: Area\n");
+        printf("%s: %.2f km2\n", cidade, area);
+        printf("%s: %.2f km2\n", cidade2, area2);
+
+        if (area > area2)
+            printf("Vencedor: %s\n", cidade);
+        else if (area2 > area)
+            printf("Vencedor: %s\n", cidade2);
+        else
+            printf("Empate!\n");
+        break;
+
+    case 3:
+        printf("Atributo: PIB\n");
+        printf("%s: %.2f\n", cidade, pib);
+        printf("%s: %.2f\n", cidade2, pib2);
+
+        if (pib > pib2)
+            printf("Vencedor: %s\n", cidade);
+        else if (pib2 > pib)
+            printf("Vencedor: %s\n", cidade2);
+        else
+            printf("Empate!\n");
+        break;
+
+    case 4:
+        printf("Atributo: Pontos Turisticos\n");
+        printf("%s: %d\n", cidade, pontosTuristicos);
+        printf("%s: %d\n", cidade2, pontosTuristicos2);
+
+        if (pontosTuristicos > pontosTuristicos2)
+            printf("Vencedor: %s\n", cidade);
+        else if (pontosTuristicos2 > pontosTuristicos)
+            printf("Vencedor: %s\n", cidade2);
+        else
+            printf("Empate!\n");
+        break;
+
+    case 5:
+        printf("Atributo: Densidade Demografica (MENOR vence)\n");
+        printf("%s: %.2f\n", cidade, densidade);
+        printf("%s: %.2f\n", cidade2, densidade2);
+
+        if (densidade < densidade2)
+            printf("Vencedor: %s\n", cidade);
+        else if (densidade2 < densidade)
+            printf("Vencedor: %s\n", cidade2);
+        else
+            printf("Empate!\n");
+        break;
+
+    default:
+        printf("Opcao invalida!\n");
+    }
 
     return 0;
 }
